@@ -26,17 +26,17 @@ $student=$_SESSION['loggedStudent'];
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#">Admin Menu</a>
+			<a class="navbar-brand" href="#">Student Menu</a>
 		</div>
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
 			<ul class="nav navbar-nav">
             <li class="active"><a href="<?php echo FRONT_ROOT ?>Home/ShowAddView">Home<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a></li>
 				<li ><a href="<?php echo FRONT_ROOT ?>Student/ShowListViewUser">Profile<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span></a></li>
-				<li ><a href="<?php echo FRONT_ROOT ?>JobPosition/ShowListView">Job list<span style="font-size:16px;" class=""></span></a></li>
-				<li><a href="<?php echo FRONT_ROOT ?>JobOffer/ShowAddView">Apply For Job<span style="font-size:16px;" class=""></span></a></li>
-				<li ><a href="<?php echo FRONT_ROOT ?>JobOffer/ShowListView">History<span style="font-size:16px;" class=""></span></a></li>
-				<li ><a href="<?php echo FRONT_ROOT ?>Home/Logout">Log Out<span style="font-size:16px;" class=""></span></a></li>
+				<li ><a href="<?php echo FRONT_ROOT ?>JobPosition/ShowListView">Job list<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-th-list "></span></a></li>
+				<li><a href="<?php echo FRONT_ROOT ?>JobOffer/ShowAddView">Apply For Job<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-ok"></span></a></li>
+				<li ><a href="<?php echo FRONT_ROOT ?>JobOffer/ShowListView">Job Applied<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-briefcase"></span></a></li>
+				<li ><a href="<?php echo FRONT_ROOT ?>Home/Logout">Log Out<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-off"></span></a></li>
 			</ul>
 		</div>
 	</div>

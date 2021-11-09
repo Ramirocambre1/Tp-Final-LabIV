@@ -32,6 +32,9 @@
             require_once(VIEWS_PATH."validate-session.php");
             
             $jobList = $this->jobPositionDAO->GetAll();
+            $jobOfferList = $this->jobOfferDAO->GetAll();
+
+            
           require_once(VIEWS_PATH."job-offer-list.php");
      
         }

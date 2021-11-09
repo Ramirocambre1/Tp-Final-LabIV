@@ -1,4 +1,5 @@
 create database UTN;
+/*drop database UTN;*/
 use UTN;
 
 create table Career(
@@ -42,6 +43,22 @@ create table Student(
 
 );
 
+create table JobOffer(
+	
+    jobOfferId int NOT NULL auto_increment,
+    jobPositionId int,
+    studentId int,
+    
+    
+    constraint pk_jobOfferId primary key(jobOfferId),
+	constraint fk_jobPositionId foreign key(jobPositionId) references JobPosition(jobPositionId),
+    constraint fk_studentId foreign key(studentId) references Student(studentId)
+
+
+);
+
+
+
 create table Company(
 
 	companyId int NOT NULL auto_increment,
@@ -53,6 +70,30 @@ create table Company(
     constraint fk_jobPositionId foreign key(jobPositionId) references JobPosition(jobPositionId)
 
 );
+
+DROP procedure IF EXISTS JobOffer_Add;
+
+DELIMITER $$
+CREATE PROCEDURE JobOffer_Add(IN jobPositionId int,IN studentId INT)
+BEGIN
+		INSERT INTO JobOffer(jobPositionId,studentID)
+        values
+        (jobPositionId,studentId);
+END$$
+
+DROP procedure IF EXISTS JobOffer_GetAll;
+
+DELIMITER $$
+
+CREATE PROCEDURE JobOffer_GetAll()
+BEGIN
+		select jobOfferId,jobPositionId,studentId
+        from JobOffer;
+
+END$$
+
+call JobOffer_GetAll();
+
 
 DROP procedure IF EXISTS Student_Add;
 
