@@ -3,6 +3,7 @@
 
     use DAO\JobPositionDAO as JobPositionDAO;
     use Models\JobPosition as JobPosition;
+    use DAO\CareerDAO as CareerDAO;
 
     class JobPositionController
     {
@@ -11,10 +12,13 @@
         public function __construct()
         {
             $this->jobpositionDAO = new JobPositionDAO();
+            $this->careerDAO = new CareerDAO();
         }
 
         public function ShowAddView()
         {
+            require_once(VIEWS_PATH."validate-session-admin.php");
+            $careerList = $this->careerDAO->GetAll();
             require_once(VIEWS_PATH."job-add.php");
         }
 
@@ -50,15 +54,51 @@
 
         }
 
-        public function Add($carrerId, $description)
+        public function ShowAddViewCompany()
+        {
+            require_once(VIEWS_PATH."validate-session-company.php");
+            $careerList = $this->careerDAO->GetAll();
+            require_once(VIEWS_PATH."job-add-company.php");
+
+        }
+
+        public function ShowListViewCompany()
+        {
+            $jobList = $this->jobpositionDAO->GetAll();
+            require_once(VIEWS_PATH."validate-session-company.php");
+            require_once(VIEWS_PATH."job-list-company.php");
+
+        }
+
+        public function Add($careerId, $description)
         {
             $jobposition = new JobPosition();
-            $jobposition->setCareerId($carrerId);
+            $jobposition->setCareerId($careerId);
             $jobposition->setDescription($description);
 
             $this->jobpositionDAO->Add($jobposition);
 
+            echo '<script type="text/javascript">';
+                echo ' alert("New job position was added successfully.")';  //not showing an alert box.
+                echo '</script>';
+
             $this->ShowAddView();
+        }
+
+        public function AddCompany($careerId,$description)
+        {
+            $jobposition = new JobPosition();
+            $jobposition->setCareerId($careerId);
+            $jobposition->setDescription($description);
+
+            $this->jobpositionDAO->Add($jobposition);
+
+            echo '<script type="text/javascript">';
+                echo ' alert("New job position was added successfully.")';  //not showing an alert box.
+                echo '</script>';
+
+            $this->ShowAddViewCompany();
+
         }
 
         public function JobId($jobPositionId)

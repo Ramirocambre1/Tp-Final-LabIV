@@ -15,11 +15,12 @@
         {
             try
             {
-                $query = "CALL Company_Add(?,?,?)";
+                $query = "CALL Company_Add(?,?,?,?,?)";
                 $parameters["jobPositionId"] = $company->getJobPositionId();
                 $parameters["companyName"] = $company->getCompanyName();
                 $parameters["description"] = $company->getDescription();
-                
+                $parameters["cuit"] = $company->getCuit();
+                $parameters["email"] = $company->getEmail();
 
                 $this->connection = Connection::GetInstance();
 
@@ -50,6 +51,8 @@
                     $company->setJobPositionId($row["jobPositionId"]);
                     $company->setCompanyName($row["companyName"]);
                     $company->setDescription($row["description"]);
+                    $company->setCuit($row["cuit"]);
+                    $company->setEmail($row["email"]);
                     
                     array_push($companyList, $company);
                 }
@@ -77,12 +80,14 @@
         public function Edit(Company $company)
         {
             
-            $query = "CALL Company_Update(?,?,?,?)";
+            $query = "CALL Company_Update(?,?,?,?,?,?)";
 
                 $parameters["companyId"] = $company->getCompanyId();
                 $parameters["jobPositionId"] = $company->getJobPositionId();
                 $parameters["companyName"] = $company->getCompanyName();
                 $parameters["description"] = $company->getDescription();
+                $parameters["cuit"] = $company->getCuit();
+                $parameters["email"] = $company->getEmail();
                 
 
             $this->connection = Connection::GetInstance();
@@ -90,5 +95,55 @@
             $this->connection->ExecuteNonQuery($query, $parameters, QueryType::StoredProcedure);
         }
         
+        
+        public function AddCompany(Company $company)
+        {
+            try
+            {
+                $query = "CALL Company_Add(?,?,?,?,?)";
+                $parameters["jobPositionId"] = $company->getJobPositionId();
+                $parameters["companyName"] = $company->getCompanyName();
+                $parameters["description"] = $company->getDescription();
+                $parameters["cuit"] = $company->getCuit();
+                $parameters["email"] = $company->getEmail();
+
+                $this->connection = Connection::GetInstance();
+
+                $this->connection->ExecuteNonQuery($query, $parameters,QueryType::StoredProcedure);
+            }
+            catch(Exception $ex)
+            {
+                throw $ex;
+            }
+        }
+
+        public function GetByEmail($email)
+        {
+            $company = null;
+
+            $query = "SELECT * FROM ".$this->tableName." WHERE (email = :email)";
+
+            $parameters["email"] = $email;
+
+            $this->connection = Connection::GetInstance();
+
+            $results = $this->connection->Execute($query, $parameters);
+
+            foreach($results as $row)
+            {
+                $company = new Company();
+                    $company->setCompanyId($row["companyId"]);
+                    $company->setJobPositionId($row["jobPositionId"]);
+                    $company->setCompanyName($row["companyName"]);
+                    $company->setDescription($row["description"]);
+                    $company->setCuit($row["cuit"]);
+                    $company->setEmail($row["email"]);
+                   
+                
+            }
+
+            return $company;
+        }  
+
     }
 ?>

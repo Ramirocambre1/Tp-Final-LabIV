@@ -1,6 +1,7 @@
 <?php
     namespace Controllers;
 
+    use DAO\CareerDAO as CareerDAO;
     use DAO\StudentDAO as StudentDAO;
     use Models\Student as Student;
 
@@ -11,18 +12,20 @@
         public function __construct()
         {
             $this->studentDAO = new StudentDAO();
+            $this->careerDAO = new CareerDAO();
         }
 
         public function ShowAddViewAdmin()
         {   
             
+            $careerList = $this->careerDAO->GetAll();
             require_once(VIEWS_PATH."student-add-admin.php");
             
         }
 
         public function ShowSignUpView()
         {
-
+            $careerList = $this->careerDAO->GetAll();
             require_once(VIEWS_PATH."sign-up.php");
         }
 

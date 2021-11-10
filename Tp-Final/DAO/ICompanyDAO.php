@@ -10,5 +10,7 @@
         function GetAll();
         function Remove($companyId);
         function Edit(Company $company);
+        function AddCompany(Company $company);
+        function GetByEmail($email);
     }
 ?>

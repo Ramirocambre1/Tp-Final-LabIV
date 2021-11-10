@@ -29,13 +29,14 @@ require_once("validate-session-admin.php");
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-            <li class="active"><a href="<?php echo FRONT_ROOT ?>Home/ShowAddViewAdmin">Home<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a></li>
+            <li ><a href="<?php echo FRONT_ROOT ?>Home/ShowAddViewAdmin">Home<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a></li>
 				<li ><a href="<?php echo FRONT_ROOT ?>Student/ShowlistViewAdmin">StudentList<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span></a></li>
 				<li ><a href="<?php echo FRONT_ROOT ?>Student/ShowAddViewAdmin">New Student<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span></a></li>
 				<li><a href="<?php echo FRONT_ROOT ?>JobPosition/ShowAddView">New Job Application<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-briefcase"></span></a></li>
-				<li><a href="<?php echo FRONT_ROOT ?>JobPosition/ShowListViewAdmin">List Job Applications<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-th-list"></span></a></li>
+				<li><a href="<?php echo FRONT_ROOT ?>JobPosition/ShowListViewAdmin">List Jobs <span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-th-list"></span></a></li>
 				<li ><a href="<?php echo FRONT_ROOT ?>Company/ShowAddView"">Add New Company<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-ok"></span></a></li>
 				<li ><a href="<?php echo FRONT_ROOT ?>Company/ShowListView"">Company List<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-th-list"></span></a></li>
+				<li><a href="<?php echo FRONT_ROOT ?>JobOffer/ShowListViewAdmin">List Jobs Applications <span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-th-list"></span></a></li>
 				<li ><a href="<?php echo FRONT_ROOT ?>Home/Logout">Log Out<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-off"></span></a></li>
 			</ul>
 		</div>
@@ -54,9 +55,11 @@ require_once("validate-session-admin.php");
                                     <h3 class="text-center heading">Add New Company</h3>
                                 </div>
                             </div>
-                            <div class="form-group form-primary"> <input type="number" class="form-control" name="jobPositionId" placeholder="Jobs Id" value="" id="jobPositionId" required> </div>
+                            <div class="form-group form-primary"> <input type="number" class="form-control" name="jobPositionId" placeholder="Jobs Id" value="" id="jobPositionId" pattern="[0-9]" required> </div>
                             <div class="form-group form-primary"> <input type="text" class="form-control" name="companyName" placeholder="Company Name" value="" id="companyName" required> </div>
                             <div class="form-group form-primary"> <input type="text" class="form-control" name="description" placeholder="Description" value="" id="description" required> </div>
+                            <div class="form-group form-primary"> <input type="number" class="form-control" name="cuit" placeholder="Cuit" value="" id="cuit" pattern="[0-9]{11}" required> </div>
+                            <div class="form-group form-primary"> <input type="email" class="form-control" name="email" placeholder="Email" value="" id="email" required> </div>
                             <div class="row">
                                 <div class="col-md-12"> <input type="submit" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20" name="submit" value="Add Company"> <!-- <button type="button" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20"><i class="fa fa-lock"></i> Signup Now </button> -->
                                 </div>

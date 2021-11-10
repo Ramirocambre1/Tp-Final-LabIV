@@ -33,7 +33,8 @@
                         </label> <input class="mb-4" type="text" name="email" placeholder="Enter a valid email address"> </div>
                     </div>
                     <div class="row mb-3 px-3"> <button type="submit" class="btn btn-blue text-center">Login</button> </div>
-                    <div class="row mb-4 px-3"> <small class="font-weight-bold">Don't have an account? <a class="text-danger" href="<?php echo FRONT_ROOT?>Student/ShowSignUpView">Register</a></small> </div>
+                    <div class="row mb-4 px-3"> <small class="font-weight-bold">Don't have an account? <br> <a class="text-danger" href="<?php echo FRONT_ROOT?>Student/ShowSignUpView">Register as Student</a></small> </div>
+                    <div class="row mb-4 px-3"> <small class="font-weight-bold"> <a class="text-danger" href="<?php echo FRONT_ROOT?>Company/ShowSignUpView">Register as Company</a></small> </div>
                 </div>
                 
                     </form>

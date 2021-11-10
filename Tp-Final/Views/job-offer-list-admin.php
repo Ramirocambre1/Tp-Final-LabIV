@@ -1,9 +1,9 @@
 <?php
 
-require_once(VIEWS_PATH."validate-session-admin.php");
+require_once("validate-session-admin.php");
+
 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -19,6 +19,12 @@ require_once(VIEWS_PATH."validate-session-admin.php");
     <div class="container-fluid">
 		<!-- Brand and toggle get grouped for better mobile display -->
 		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-sidebar-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
 			<a class="navbar-brand" href="#">Admin Menu</a>
 		</div>
 		<!-- Collect the nav links, forms, and other content for toggling -->
@@ -47,48 +53,40 @@ require_once(VIEWS_PATH."validate-session-admin.php");
             </div>
         </div>
         <div class="table-responsive">
-        <form action="<?php echo FRONT_ROOT."Company/Remove"?>"" method="">    
             <table class="table">
                 <thead>
                     <tr>
-                        <th>Company Id</th>
-                        <th>Job Position Id</th>
-                        <th>Company Name</th>
+                        <th>Job Id</th>
+                        <th>Student Id</th>
                         <th>Description</th>
-                        <th>Cuit</th>
-                        <th>Email</th>
                     </tr>
                 </thead>
                 <tbody>
-                <?php
-                     foreach($companyList as $company)
-                              {
-                                 ?>
-                                     <tr>
-                                         <td><?php echo $company->getCompanyId() ?></td>
-                                        <td><?php echo $company->getJobPositionId() ?></td>
-                                         <td><?php echo $company->getCompanyName() ?></td>
-                                         <td><?php echo $company->getDescription() ?></td>
-                                         <td><?php echo $company->getCuit()?></td>
-                                         <td><?php echo $company->getEmail()?></td>
-                                         <td></td>
-                                         <td>
-                                         <button type="submit" name="companyId" class="btn-danger" value="<?php echo $company->getCompanyId() ?>"> Remove </button>
-                                         <a class="btn btn-success" href="<?php echo FRONT_ROOT ?>Company/ShowEditView" role="button">Edit</a>
-                                        </td>
-                                            
-                                    </tr>
-                                <?php
+                <?php          
+                     foreach($jobOfferList as $job=>$valuesArray)
+                        {
+                            foreach($jobList as $job2=>$valuesArray2)
+                            {
+                                if($valuesArray->getJobPositionId()==$valuesArray2->getJobPositionId())
+                                {
+                         ?>     <tr>
+                                    <td><?php echo $valuesArray->getJobPositionId()  ?></td>
+                                    <td><?php echo $valuesArray->getStudentId()  ?></td>
+                                    <td><?php echo $valuesArray2->getDescription()  ?></td>
+                                    
+                                 </tr>  
+                 <?php   
+                                }
                             }
-                        ?>
-                    </tr>
+                        }
+                ?>           
+                
+                         
                 </tbody>
-            </table></form>
+            </table>
         </div>
     </div>
 </div>
+</div>
 
-
-
-
- </body>
+</body>

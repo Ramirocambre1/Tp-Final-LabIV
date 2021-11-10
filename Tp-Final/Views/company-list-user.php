@@ -1,9 +1,8 @@
 <?php
 
-require_once(VIEWS_PATH."validate-session-admin.php");
+require_once("validate-session.php");
 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -19,19 +18,23 @@ require_once(VIEWS_PATH."validate-session-admin.php");
     <div class="container-fluid">
 		<!-- Brand and toggle get grouped for better mobile display -->
 		<div class="navbar-header">
-			<a class="navbar-brand" href="#">Admin Menu</a>
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-sidebar-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#"> Student Menu</a>
 		</div>
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-            <li ><a href="<?php echo FRONT_ROOT ?>Home/ShowAddViewAdmin">Home<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a></li>
-				<li ><a href="<?php echo FRONT_ROOT ?>Student/ShowlistViewAdmin">StudentList<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span></a></li>
-				<li ><a href="<?php echo FRONT_ROOT ?>Student/ShowAddViewAdmin">New Student<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span></a></li>
-				<li><a href="<?php echo FRONT_ROOT ?>JobPosition/ShowAddView">New Job Application<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-briefcase"></span></a></li>
-				<li><a href="<?php echo FRONT_ROOT ?>JobPosition/ShowListViewAdmin">List Jobs <span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-th-list"></span></a></li>
-				<li ><a href="<?php echo FRONT_ROOT ?>Company/ShowAddView"">Add New Company<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-ok"></span></a></li>
-				<li ><a href="<?php echo FRONT_ROOT ?>Company/ShowListView"">Company List<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-th-list"></span></a></li>
-				<li><a href="<?php echo FRONT_ROOT ?>JobOffer/ShowListViewAdmin">List Jobs Applications <span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-th-list"></span></a></li>
+				<li ><a href="<?php echo FRONT_ROOT ?>Home/ShowAddView">Home<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a></li>
+				<li ><a href="<?php echo FRONT_ROOT ?>Student/ShowListViewUser">Profile<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span></a></li>
+                <li ><a href="<?php echo FRONT_ROOT ?>Company/ShowListViewUser">Company List<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-list-alt"></span></a></li>
+				<li ><a href="<?php echo FRONT_ROOT ?>JobPosition/ShowListView">Job list<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-th-list "></span></a></li>
+				<li><a href="<?php echo FRONT_ROOT ?>JobOffer/ShowAddView">Apply For Job<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-ok"></span></a></li>
+				<li ><a href="<?php echo FRONT_ROOT ?>JobOffer/ShowListView">Job Applied<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-briefcase"></span></a></li>
 				<li ><a href="<?php echo FRONT_ROOT ?>Home/Logout">Log Out<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-off"></span></a></li>
 			</ul>
 		</div>
@@ -47,7 +50,7 @@ require_once(VIEWS_PATH."validate-session-admin.php");
             </div>
         </div>
         <div class="table-responsive">
-        <form action="<?php echo FRONT_ROOT."Company/Remove"?>"" method="">    
+        <form action="" method="">    
             <table class="table">
                 <thead>
                     <tr>
@@ -73,8 +76,6 @@ require_once(VIEWS_PATH."validate-session-admin.php");
                                          <td><?php echo $company->getEmail()?></td>
                                          <td></td>
                                          <td>
-                                         <button type="submit" name="companyId" class="btn-danger" value="<?php echo $company->getCompanyId() ?>"> Remove </button>
-                                         <a class="btn btn-success" href="<?php echo FRONT_ROOT ?>Company/ShowEditView" role="button">Edit</a>
                                         </td>
                                             
                                     </tr>
@@ -88,7 +89,4 @@ require_once(VIEWS_PATH."validate-session-admin.php");
     </div>
 </div>
 
-
-
-
- </body>
+</body>
