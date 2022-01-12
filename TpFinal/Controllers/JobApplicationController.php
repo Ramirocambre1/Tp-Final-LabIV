@@ -99,7 +99,7 @@
             $studentList=$this->studentDAO->GetAll();
             $user=$_SESSION['loggedUser'];
             $jobApplicationList=$this->jobApplicationDAO->GetAll();
-            $studentExist=NULL;
+            $studentExist=false;
          
             foreach($studentList as $student2=>$valuesArray)
             {
@@ -116,10 +116,7 @@
                     $studentExist=true;
 
                 }
-                else
-                {
-                    $studentExist=false;
-                }
+               
             }
 
             if($studentExist==true)
